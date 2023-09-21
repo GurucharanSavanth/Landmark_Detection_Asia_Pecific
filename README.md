@@ -29,7 +29,7 @@ This repository contains a simple Python script that uses Gradio to build a web 
 3. Download the training images from https://s3.amazonaws.com/google-landmark/train/images_345.tar and extract them to the images_345 directory.
 
 4. Run the web app:
-```python python landmark_detection.py```
+```python python main.py```
 
 This will launch a web app in your browser. You can then upload an image and the app will predict the landmark in the image.
 
