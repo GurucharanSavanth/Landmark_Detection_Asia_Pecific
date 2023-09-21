@@ -1,0 +1,7 @@
+numpy
+pandas
+matplotlib
+gradio
+PIL.Image
+tensorflow
+tensorflow-hub
