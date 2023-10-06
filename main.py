@@ -7,6 +7,7 @@ import tensorflow as tf
 import tensorflow_hub as hub
 from gradio import components
 ## Downlode https://s3.amazonaws.com/google-landmark/train/images_345.tar
+## You can use different Sources Eg. Local Path or online dataset model and csv model as well  
 TF_MODEL_URL = 'https://tfhub.dev/google/on_device_vision/classifier/landmarks_classifier_asia_V1/1'
 LABEL_MAP_URL = 'https://www.gstatic.com/aihub/tfhub/labelmaps/landmarks_classifier_asia_V1_label_map.csv'
 IMAGE_SHAPE = (321, 321)
@@ -73,3 +74,16 @@ gr.Interface(
     outputs=label,
 ).launch(Debug=True)
 
+
+'''You can use the 
+gr.Interface(
+    classify_image,
+    inputs=image,
+    outputs=label,
+).launch(share=True) for Generally sharing the link which can be used as well 
+and 
+
+(Debug=True) for debugging purpous 
+
+
+'''
