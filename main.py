@@ -71,5 +71,5 @@ gr.Interface(
     classify_image,
     inputs=image,
     outputs=label,
-).launch(share=True)
+).launch(Debug=True)
 
