@@ -46,7 +46,7 @@ Click the "Classify" button.
 The app will predict the landmark in the image and display the result.
 For example, if you upload an image of the Eiffel Tower, the app will predict "Eiffel Tower" as the landmark.
 
-** NOTE : This Program has Limited Dataset sourced from the kaggle so the predection is only 85% in Worst case and 87% in Best case  Predection 
+**NOTE : This Program has Limited Dataset sourced from the kaggle so the predection is only 85% in Worst case and 87% in Best case  Predection**
 
 **Deployment:**
 
