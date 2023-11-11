@@ -19,10 +19,9 @@ classifier = tf.keras.Sequential([hub.KerasLayer(TF_MODEL_URL,
 df = pd.read_csv(LABEL_MAP_URL)
 label_map = dict(zip(df.id, df.name))
 
-img_loc = [ "C:/Users/savan/pythonProject/pythonProject/Computer_Vision_V2/images_345/b/0/b/b0b202c05c722f59.jpg","C:/Users/savan/pythonProject/pythonProject/Computer_Vision_V2/images_345/b/0/b/b0b2045cb474a478.jpg","C:/Users/savan/pythonProject/pythonProject/Computer_Vision_V2/images_345/b/0/b/b0b207bb01b5e129.jpg","C:/Users/savan/pythonProject/pythonProject/Computer_Vision_V2/images_345/b/0/b/b0b20eaedbf58be5.jpg","C:/Users/savan/pythonProject/pythonProject/Computer_Vision_V2/images_345/b/0/b/b0b215c27841e2fa.jpg","C:/Users/savan/pythonProject/pythonProject/Computer_Vision_V2/images_345/b/0/b/b0b218017d91e3aa.jpg","C:/Users/savan/pythonProject/pythonProject/Computer_Vision_V2/images_345/b/0/b/b0b21fec1b0afc34.jpg","C:/Users/savan/pythonProject/pythonProject/Computer_Vision_V2/images_345/b/0/b/b0b222ba2cdde805.jpg","C:/Users/savan/pythonProject/pythonProject/Computer_Vision_V2/images_345/b/0/b/b0b22b81544ae2fe.jpg"]
+img_loc = [ "/content/b0b2d0916f625f4a.jpg","/content/b0b2db10da6e09c9.jpg"]
 for img_loc in img_loc:
     img = Image.open(img_loc).resize(IMAGE_SHAPE)
-
     print(img)
 
 
@@ -59,22 +58,33 @@ ax.set_ylabel('Y')
 # Show the plot
 plt.show()
 
+import streamlit as st
+from PIL import Image
+import numpy as np
+
+# Assuming that the model, preprocessor, and label_map are defined
+
 def classify_image(image):
     img = np.array(image) / 255.0
     img = img[np.newaxis, ...]
     prediction = classifier.predict(img)
     return label_map[np.argmax(prediction)]
 
-image = components.Image(shape=(321, 321))
+st.title('Landmark Prediction App')
+uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
+if uploaded_file is not None:
+    image = Image.open(uploaded_file).resize(IMAGE_SHAPE)
+    st.image(image, caption='Input Image', use_column_width=True)
+    prediction = classify_image(image)
+    st.write(f"Predicted Landmark: {prediction}")
+image = components.Image()
 label = components.Label(num_top_classes=1)
 
 gr.Interface(
     classify_image,
     inputs=image,
-    outputs=label,
-).launch(Debug=True)
-
-
+    outputs=label
+).launch(share=True)
 '''You can use the 
 gr.Interface(
     classify_image,
