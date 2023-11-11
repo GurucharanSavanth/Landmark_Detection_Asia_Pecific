@@ -5,3 +5,4 @@ gradio==4.2.0
 pillow==9.2.0 
 tensorflow==2.9.3 
 tensorflow-hub==0.10.0
+streamlit
