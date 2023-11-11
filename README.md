@@ -18,6 +18,7 @@ This repository contains a simple Python script that uses Gradio to build a web 
 * PIL.Image
 * TensorFlow
 * TensorFlow Hub
+* streamlit
 
 **Instructions:**
 
