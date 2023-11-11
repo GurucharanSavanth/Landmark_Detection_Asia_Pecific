@@ -6,6 +6,8 @@ import PIL.Image as Image
 import tensorflow as tf
 import tensorflow_hub as hub
 from gradio import components
+import streamlit as st
+
 ## Downlode https://s3.amazonaws.com/google-landmark/train/images_345.tar
 ## You can use different Sources Eg. Local Path or online dataset model and csv model as well  
 TF_MODEL_URL = 'https://tfhub.dev/google/on_device_vision/classifier/landmarks_classifier_asia_V1/1'
@@ -57,10 +59,6 @@ ax.set_ylabel('Y')
 
 # Show the plot
 plt.show()
-
-import streamlit as st
-from PIL import Image
-import numpy as np
 
 # Assuming that the model, preprocessor, and label_map are defined
 
