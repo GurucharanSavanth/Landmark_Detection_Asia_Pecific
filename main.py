@@ -10,6 +10,11 @@ import streamlit as st
 
 ## Downlode https://s3.amazonaws.com/google-landmark/train/images_345.tar
 ## You can use different Sources Eg. Local Path or online dataset model and csv model as well  
+# Constants and URLs
+TF_MODEL_URL = 'https://tfhub.dev/google/on_device_vision/classifier/landmarks_classifier_asia_V1/1'
+LABEL_MAP_URL = 'https://www.gstatic.com/aihub/tfhub/labelmaps/landmarks_classifier_asia_V1_label_map.csv'
+IMAGE_SHAPE = (321, 321)
+
 # Load model and label map
 classifier = tf.keras.Sequential([hub.KerasLayer(TF_MODEL_URL, input_shape=IMAGE_SHAPE + (3,), output_key="predictions:logits")])
 df = pd.read_csv(LABEL_MAP_URL)
@@ -57,5 +62,7 @@ gr.Interface(
     inputs=image_input,
     outputs=label_output
 ).launch(share=True)
+# to run the program using streamlit
+# streamlit run colab_kernel_launcher.py
 # to run the program using streamlit
 # streamlit run colab_kernel_launcher.py
